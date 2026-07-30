@@ -1,0 +1,4 @@
+interface:
+  display_name: "Deep Learning Paper Writing"
+  short_description: "Draft rigorous, readable deep learning papers"
+  default_prompt: "Use $write-deep-learning-papers to turn my research results into a submission-ready paper."

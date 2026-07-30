@@ -1,0 +1,4 @@
+interface:
+  display_name: "Launch Theory Agent"
+  short_description: "Launch cyclic multi-agent theorem research"
+  default_prompt: "Use $launch-theory-agent to formalize this theory problem and launch a cyclic construction-and-audit research team."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Experiment Report Writing"
+  short_description: "Write rigorous, reproducible experiment reports"
+  default_prompt: "Use $write-experiment-reports to audit my experiment artifacts, write the report, and render a QA-checked PDF."

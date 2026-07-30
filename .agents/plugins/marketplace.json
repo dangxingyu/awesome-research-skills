@@ -1,0 +1,32 @@
+{
+  "name": "awesome-agent-skills",
+  "interface": {
+    "displayName": "Awesome Agent Skills"
+  },
+  "plugins": [
+    {
+      "name": "experiment-reporting-suite",
+      "source": {
+        "source": "local",
+        "path": "./plugins/experiment-reporting-suite"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Education"
+    },
+    {
+      "name": "theory-research-suite",
+      "source": {
+        "source": "local",
+        "path": "./plugins/theory-research-suite"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Education"
+    }
+  ]
+}

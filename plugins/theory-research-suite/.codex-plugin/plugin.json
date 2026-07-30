@@ -1,0 +1,28 @@
+{
+  "name": "theory-research-suite",
+  "version": "0.1.0",
+  "description": "Multi-agent theorem search and rigorous machine-learning paper writing workflows.",
+  "author": {
+    "name": "dangxingyu",
+    "url": "https://github.com/dangxingyu"
+  },
+  "homepage": "https://github.com/dangxingyu/theory-research-suite",
+  "repository": "https://github.com/dangxingyu/theory-research-suite",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Theory Research Suite",
+    "shortDescription": "Search for rigorous theory results and turn them into papers.",
+    "longDescription": "Provides two reusable workflows: a cyclic, independently audited multi-agent theory search and an evidence-aligned workflow for planning, drafting, revising, and reviewing machine-learning research papers.",
+    "developerName": "dangxingyu",
+    "category": "Education",
+    "capabilities": [
+      "Research",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Launch an audited multi-agent search for this theory problem.",
+      "Turn my proof notes into a rigorous theory-paper outline.",
+      "Review this manuscript for claim and evidence gaps."
+    ]
+  }
+}

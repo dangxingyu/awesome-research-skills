@@ -1,0 +1,28 @@
+{
+  "name": "experiment-reporting-suite",
+  "version": "0.1.0",
+  "description": "Evidence-aligned experiment reporting with reproducible PDF delivery.",
+  "author": {
+    "name": "dangxingyu",
+    "url": "https://github.com/dangxingyu"
+  },
+  "homepage": "https://github.com/dangxingyu/awesome-agent-skills",
+  "repository": "https://github.com/dangxingyu/awesome-agent-skills",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Experiment Reporting Suite",
+    "shortDescription": "Audit experiments and deliver rigorous reports.",
+    "longDescription": "Audits implementation, run settings, metrics, and figures; maps algorithms to experiments; and produces reproducible Markdown, HTML, and page-checked PDF reports.",
+    "developerName": "dangxingyu",
+    "category": "Education",
+    "capabilities": [
+      "Research",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Turn these experiment artifacts into a rigorous report.",
+      "Audit this report against the code and run configs.",
+      "Render this experiment report as a checked PDF."
+    ]
+  }
+}
