@@ -1,0 +1,49 @@
+{
+  "name": "awesome-research-skills",
+  "owner": {
+    "name": "dangxingyu",
+    "url": "https://github.com/dangxingyu"
+  },
+  "metadata": {
+    "description": "Reusable research and technical-writing workflows for coding agents.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "experiment-reporting-suite",
+      "source": "./plugins/experiment-reporting-suite",
+      "description": "Evidence-aligned experiment reporting with reproducible PDF delivery.",
+      "version": "0.1.0",
+      "author": {
+        "name": "dangxingyu",
+        "url": "https://github.com/dangxingyu"
+      },
+      "homepage": "https://github.com/dangxingyu/awesome-research-skills",
+      "category": "productivity",
+      "keywords": [
+        "research",
+        "experiments",
+        "reporting",
+        "pdf"
+      ]
+    },
+    {
+      "name": "theory-research-suite",
+      "source": "./plugins/theory-research-suite",
+      "description": "Multi-agent theorem search and rigorous machine-learning paper writing workflows.",
+      "version": "0.1.0",
+      "author": {
+        "name": "dangxingyu",
+        "url": "https://github.com/dangxingyu"
+      },
+      "homepage": "https://github.com/dangxingyu/theory-research-suite",
+      "category": "productivity",
+      "keywords": [
+        "research",
+        "theory",
+        "papers",
+        "subagents"
+      ]
+    }
+  ]
+}

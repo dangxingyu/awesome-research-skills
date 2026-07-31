@@ -22,7 +22,8 @@ Infer the mode from the request:
   Do not restart completed cycles.
 
 Using this skill in launch mode counts as an explicit request for subagent
-work. Use collaboration subagents, not user-owned Codex threads.
+work. Use collaboration subagents owned by this session (Codex collaboration
+agents; the Agent tool in Claude Code), not new user-owned threads.
 
 ## Read the reusable references
 
@@ -126,8 +127,9 @@ allows:
 Use fewer agents if the problem admits fewer genuinely independent tracks.
 Never spend two slots on paraphrases of the same mechanism.
 
-Prefer `fork_turns="none"` after the workspace prompt is self-contained. Give
-each agent:
+Launch each agent from the self-contained workspace prompt rather than from
+inherited chat history (in Codex, prefer `fork_turns="none"`; Claude Code
+subagents start with fresh context by default). Give each agent:
 
 - the shared prompt path;
 - a concise role overlay;
@@ -163,8 +165,9 @@ Read every first-wave report yourself. For each survivor:
 - assign the candidate to a different agent for independent audit;
 - request constant tracking, quantifier checking, and edge cases.
 
-Use `followup_task` for a completed agent or spawn a fresh auditor if capacity
-and independence warrant it.
+Send a follow-up task to a completed agent (`followup_task` in Codex,
+`SendMessage` in Claude Code) or spawn a fresh auditor if capacity and
+independence warrant it.
 
 ### Cycle 3: Removal stress test
 

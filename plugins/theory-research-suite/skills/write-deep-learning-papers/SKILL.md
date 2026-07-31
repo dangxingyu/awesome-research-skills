@@ -1,6 +1,6 @@
 ---
 name: write-deep-learning-papers
-description: Plan, draft, revise, or review rigorous deep learning and machine learning research papers, including empirical method papers, theory papers, benchmark/evaluation papers, and systems papers. Use when Codex needs to turn research notes, results, plots, proofs, code, or an existing manuscript into an abstract, outline, section, full draft, rebuttal-oriented revision, or submission-readiness review without inventing evidence or citations.
+description: Plan, draft, revise, or review rigorous deep learning and machine learning research papers, including empirical method papers, theory papers, benchmark/evaluation papers, and systems papers. Use when asked to turn research notes, results, plots, proofs, code, or an existing manuscript into an abstract, outline, section, full draft, rebuttal-oriented revision, or submission-readiness review without inventing evidence or citations.
 ---
 
 # Write Deep Learning Papers

@@ -1,0 +1,17 @@
+{
+  "name": "experiment-reporting-suite",
+  "version": "0.1.0",
+  "description": "Evidence-aligned experiment reporting with reproducible PDF delivery.",
+  "author": {
+    "name": "dangxingyu",
+    "url": "https://github.com/dangxingyu"
+  },
+  "homepage": "https://github.com/dangxingyu/awesome-research-skills",
+  "repository": "https://github.com/dangxingyu/awesome-research-skills",
+  "keywords": [
+    "research",
+    "experiments",
+    "reporting",
+    "pdf"
+  ]
+}
