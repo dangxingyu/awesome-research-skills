@@ -1,7 +1,7 @@
 {
-  "name": "research-planning-suite",
-  "version": "0.1.0",
-  "description": "Turn vague research ideas into falsifiable project contracts and prediction-annotated experiment roadmaps.",
+  "name": "research-skills",
+  "version": "0.2.0",
+  "description": "Research workflow skills: sharpen vague ideas into plans, run audited theory searches, read arxiv papers, and write rigorous reports and papers.",
   "author": {
     "name": "dangxingyu",
     "url": "https://github.com/dangxingyu"
@@ -11,7 +11,9 @@
   "keywords": [
     "research",
     "planning",
-    "ideation",
-    "preregistration"
+    "theory",
+    "arxiv",
+    "papers",
+    "reporting"
   ]
 }

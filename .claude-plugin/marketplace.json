@@ -6,50 +6,14 @@
   },
   "metadata": {
     "description": "Reusable research and technical-writing workflows for coding agents.",
-    "version": "0.1.0"
+    "version": "0.2.0"
   },
   "plugins": [
     {
-      "name": "experiment-reporting-suite",
-      "source": "./plugins/experiment-reporting-suite",
-      "description": "Evidence-aligned experiment reporting with reproducible PDF delivery.",
-      "version": "0.1.0",
-      "author": {
-        "name": "dangxingyu",
-        "url": "https://github.com/dangxingyu"
-      },
-      "homepage": "https://github.com/dangxingyu/awesome-research-skills",
-      "category": "productivity",
-      "keywords": [
-        "research",
-        "experiments",
-        "reporting",
-        "pdf"
-      ]
-    },
-    {
-      "name": "theory-research-suite",
-      "source": "./plugins/theory-research-suite",
-      "description": "Multi-agent theorem search and rigorous machine-learning paper writing workflows.",
-      "version": "0.1.0",
-      "author": {
-        "name": "dangxingyu",
-        "url": "https://github.com/dangxingyu"
-      },
-      "homepage": "https://github.com/dangxingyu/theory-research-suite",
-      "category": "productivity",
-      "keywords": [
-        "research",
-        "theory",
-        "papers",
-        "subagents"
-      ]
-    },
-    {
-      "name": "research-planning-suite",
-      "source": "./plugins/research-planning-suite",
-      "description": "Turn vague research ideas into falsifiable project contracts and prediction-annotated experiment roadmaps.",
-      "version": "0.1.0",
+      "name": "research-skills",
+      "source": "./plugins/research-skills",
+      "description": "Research workflow skills: sharpen vague ideas into plans, run audited theory searches, read arxiv papers, and write rigorous reports and papers.",
+      "version": "0.2.0",
       "author": {
         "name": "dangxingyu",
         "url": "https://github.com/dangxingyu"
@@ -59,26 +23,10 @@
       "keywords": [
         "research",
         "planning",
-        "ideation",
-        "preregistration"
-      ]
-    },
-    {
-      "name": "paper-reading-suite",
-      "source": "./plugins/paper-reading-suite",
-      "description": "Read arxiv papers from their TeX source and summarize them in the context of the current project.",
-      "version": "0.1.0",
-      "author": {
-        "name": "karpathy",
-        "url": "https://github.com/karpathy"
-      },
-      "homepage": "https://github.com/karpathy/nanochat",
-      "category": "productivity",
-      "keywords": [
+        "theory",
         "arxiv",
         "papers",
-        "reading",
-        "research"
+        "reporting"
       ]
     }
   ]
