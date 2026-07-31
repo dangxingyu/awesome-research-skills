@@ -1,0 +1,17 @@
+{
+  "name": "paper-reading-suite",
+  "version": "0.1.0",
+  "description": "Read arxiv papers from their TeX source and summarize them in the context of the current project.",
+  "author": {
+    "name": "karpathy",
+    "url": "https://github.com/karpathy"
+  },
+  "homepage": "https://github.com/karpathy/nanochat",
+  "repository": "https://github.com/karpathy/nanochat",
+  "keywords": [
+    "arxiv",
+    "papers",
+    "reading",
+    "research"
+  ]
+}

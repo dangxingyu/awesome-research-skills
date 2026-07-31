@@ -62,6 +62,24 @@
         "ideation",
         "preregistration"
       ]
+    },
+    {
+      "name": "paper-reading-suite",
+      "source": "./plugins/paper-reading-suite",
+      "description": "Read arxiv papers from their TeX source and summarize them in the context of the current project.",
+      "version": "0.1.0",
+      "author": {
+        "name": "karpathy",
+        "url": "https://github.com/karpathy"
+      },
+      "homepage": "https://github.com/karpathy/nanochat",
+      "category": "productivity",
+      "keywords": [
+        "arxiv",
+        "papers",
+        "reading",
+        "research"
+      ]
     }
   ]
 }
