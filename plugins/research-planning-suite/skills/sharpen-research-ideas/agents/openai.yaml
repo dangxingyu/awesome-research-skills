@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sharpen Research Ideas"
+  short_description: "Turn vague ideas into falsifiable project plans"
+  default_prompt: "Use $sharpen-research-ideas to narrow my vague idea into a project contract and a prediction-annotated experiment roadmap."

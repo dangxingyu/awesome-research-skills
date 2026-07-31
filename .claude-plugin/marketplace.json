@@ -44,6 +44,24 @@
         "papers",
         "subagents"
       ]
+    },
+    {
+      "name": "research-planning-suite",
+      "source": "./plugins/research-planning-suite",
+      "description": "Turn vague research ideas into falsifiable project contracts and prediction-annotated experiment roadmaps.",
+      "version": "0.1.0",
+      "author": {
+        "name": "dangxingyu",
+        "url": "https://github.com/dangxingyu"
+      },
+      "homepage": "https://github.com/dangxingyu/awesome-research-skills",
+      "category": "productivity",
+      "keywords": [
+        "research",
+        "planning",
+        "ideation",
+        "preregistration"
+      ]
     }
   ]
 }

@@ -1,0 +1,28 @@
+{
+  "name": "research-planning-suite",
+  "version": "0.1.0",
+  "description": "Turn vague research ideas into falsifiable project contracts and prediction-annotated experiment roadmaps.",
+  "author": {
+    "name": "dangxingyu",
+    "url": "https://github.com/dangxingyu"
+  },
+  "homepage": "https://github.com/dangxingyu/awesome-research-skills",
+  "repository": "https://github.com/dangxingyu/awesome-research-skills",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Research Planning Suite",
+    "shortDescription": "Sharpen vague ideas into falsifiable project plans.",
+    "longDescription": "Captures the kernel of a vague research idea through one early interview, diverges into materially different candidate projects, kill-tests and selects autonomously, and delivers a project contract plus a prediction-annotated experiment roadmap with pre-committed surprise handling.",
+    "developerName": "dangxingyu",
+    "category": "Education",
+    "capabilities": [
+      "Research",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Sharpen this vague idea into a project contract and experiment roadmap.",
+      "I have a hunch - narrow it down and tell me what to run first.",
+      "Turn my notes into a prediction-annotated research plan."
+    ]
+  }
+}

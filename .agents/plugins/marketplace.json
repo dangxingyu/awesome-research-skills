@@ -27,6 +27,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Education"
+    },
+    {
+      "name": "research-planning-suite",
+      "source": {
+        "source": "local",
+        "path": "./plugins/research-planning-suite"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Education"
     }
   ]
 }

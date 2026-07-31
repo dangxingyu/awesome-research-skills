@@ -28,7 +28,10 @@ and `grep` when `rg` is unavailable. Locate:
 - data manifests, preprocessing code, and split definitions;
 - logs, metric tables, confidence intervals, plots, and result manifests;
 - the code revision and environment used for each run;
-- existing notes, preregistrations, reports, and declared decision gates.
+- existing notes, preregistrations, reports, and declared decision gates,
+  including pre-registered prediction ledgers when present (for example
+  `research_plans/<slug>/predictions.md` from the `sharpen-research-ideas`
+  skill).
 
 Create an evidence ledger with one row per claim or reported number. Record its
 source path, run/checkpoint identifier, evidence status, and any caveat.
@@ -115,6 +118,10 @@ evaluation, result, and interpretation.
 Report effect sizes and uncertainty, not only point estimates. Name the
 resampling unit and whether comparisons are paired. Make clear when a result
 is IID, OOD, checkpoint-selected, repeated-corpus, or token-matched.
+
+When pre-registered predictions exist for an experiment, report predicted
+versus observed outcomes and flag surprises explicitly rather than absorbing
+them into the nearest prediction.
 
 ## Phase 5: Build claim-bearing figures
 
