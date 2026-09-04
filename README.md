@@ -11,19 +11,23 @@ Codex and Claude Code. One plugin, five skills.
 | `launch-theory-agent` | Run audited, cyclic multi-agent theorem searches. |
 | `read-arxiv-paper` | Fetch an arxiv paper's TeX source, read it end to end, and summarize it in the context of the current project. |
 | `write-experiment-reports` | Audit experiment evidence, define algorithms and settings precisely, write a rigorous report, and render a QA-checked PDF. |
-| `write-deep-learning-papers` | Plan, draft, revise, and review rigorous machine-learning research papers. |
+| `paper-writing` | Plan, draft, revise, and audit machine-learning and mathematical research papers. |
 
 The skills compose into a pipeline: sharpen an idea into a plan, run the plan
 (theory branches via `launch-theory-agent`, literature checks via
 `read-arxiv-paper`), report results against the pre-registered predictions
 via `write-experiment-reports`, and write the paper via
-`write-deep-learning-papers`.
+`paper-writing`.
 
 Provenance:
 
-- `launch-theory-agent` and `write-deep-learning-papers` originate from
+- `launch-theory-agent` originates from
   [`dangxingyu/theory-research-suite`](https://github.com/dangxingyu/theory-research-suite)
   (commit `a86e60d`), with platform-neutral wording adjustments.
+- `paper-writing` supersedes the earlier `write-deep-learning-papers` skill.
+  It organizes the paper-wide workflow into focused guidance for story and
+  section design, mathematical exposition, technical style, exemplar
+  patterns, and submission checks.
 - `read-arxiv-paper` is adapted from
   [`karpathy/nanochat`](https://github.com/karpathy/nanochat) (MIT, commit
   `92d63d4`), with the nanochat-specific cache path and summary framing
@@ -49,7 +53,7 @@ $sharpen-research-ideas
 $launch-theory-agent
 $read-arxiv-paper
 $write-experiment-reports
-$write-deep-learning-papers
+$paper-writing
 ```
 
 Codex may also invoke a skill automatically when a request matches its
@@ -72,7 +76,7 @@ invoke a skill by name:
 /launch-theory-agent
 /read-arxiv-paper
 /write-experiment-reports
-/write-deep-learning-papers
+/paper-writing
 ```
 
 Claude Code may also invoke a skill automatically when a request matches its
@@ -92,5 +96,5 @@ awesome-research-skills/
         ├── launch-theory-agent/
         ├── read-arxiv-paper/
         ├── write-experiment-reports/
-        └── write-deep-learning-papers/
+        └── paper-writing/
 ```

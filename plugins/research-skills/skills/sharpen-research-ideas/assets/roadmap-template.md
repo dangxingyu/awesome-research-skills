@@ -12,7 +12,7 @@ experiment. Conventions:
   candidate from `candidates.md`.
 - Handoffs to sibling skills are stadium nodes too: `launch-theory-agent`
   for a theory branch, `write-experiment-reports` once runs complete,
-  `write-deep-learning-papers` for the endgame.
+  `paper-writing` for the endgame.
 - As results land, prefix node labels with status — `[running]`, `[done: B]`
   (observed branch) — and keep edges unchanged so the prediction record
   stays visible.

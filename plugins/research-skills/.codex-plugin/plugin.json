@@ -1,6 +1,6 @@
 {
   "name": "research-skills",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Research workflow skills: sharpen vague ideas into plans, run audited theory searches, read arxiv papers, and write rigorous reports and papers.",
   "author": {
     "name": "dangxingyu",
@@ -12,7 +12,7 @@
   "interface": {
     "displayName": "Research Skills",
     "shortDescription": "End-to-end research workflow skills.",
-    "longDescription": "Five composable skills covering the research loop: sharpen a vague idea into a falsifiable project contract and prediction-annotated roadmap, launch audited multi-agent theory searches, read arxiv papers from TeX source, write rigorous experiment reports with QA-checked PDFs, and write submission-ready machine-learning papers.",
+    "longDescription": "Five composable skills covering the research loop: sharpen a vague idea into a falsifiable project contract and prediction-annotated roadmap, launch audited multi-agent theory searches, read arxiv papers from TeX source, write rigorous experiment reports with QA-checked PDFs, and plan, draft, revise, or audit machine-learning and mathematical papers.",
     "developerName": "dangxingyu",
     "category": "Education",
     "capabilities": [

@@ -135,7 +135,7 @@ as a decision tree using the roadmap template: experiments as nodes,
 predicted branches as labeled edges, surprise branches dashed, runner-up
 candidates as pivot targets, and kill criteria explicit. Mark where sibling
 skills take over: `launch-theory-agent` for theory branches,
-`write-experiment-reports` after runs complete, `write-deep-learning-papers`
+`write-experiment-reports` after runs complete, `paper-writing`
 for the endgame.
 
 ## Workspace
