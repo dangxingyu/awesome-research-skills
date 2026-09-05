@@ -33,27 +33,14 @@ Treat this as planning guidance, not a reason to conceal a serious late-discover
 - [ ] Paragraph openings alone recover a reasonable summary.
 - [ ] Each section and subsection has one communicative job.
 - [ ] Terminology and notation are stable.
-- [ ] Important definitions appear before use and are recalled after long gaps.
+- [ ] Important definitions appear before substantive use and are recalled after long gaps; necessary advance mentions follow the Cref strategy.
+- [ ] Comments and remarks follow their supporting definitions, except in genuine introduction or section-overview previews.
 - [ ] Theorems are followed by interpretation and proof pointers.
 - [ ] Lemma statements and adjacent prose reveal the proof plan.
 - [ ] Experiments are organized by claims or questions, not chronology.
 - [ ] Claims have evidence at the appropriate scale and under fair comparisons.
 - [ ] Figures and captions can be skimmed independently.
 - [ ] Limitations identify real boundaries.
-- [ ] Every abstract claim maps to a theorem, figure, table, or labeled analysis.
-- [ ] `prove`, `show`, `suggest`, `observe`, and `hypothesize` match the strength of the evidence.
-- [ ] Correlational, asymptotic, and simplified-model results are scoped correctly.
-- [ ] Novelty and state-of-the-art claims have been checked against current primary literature.
-
-## Experimental and evaluation audit
-
-- [ ] Baselines are relevant, strong, and comparably tuned.
-- [ ] Data, model capacity, training budget, tuning budget, and evaluation protocol are matched or their asymmetries are disclosed.
-- [ ] Randomness and uncertainty are visible when they affect the conclusion.
-- [ ] Ablations isolate stated design or mechanism claims rather than merely toggling components.
-- [ ] Leakage, contamination, de-duplication, and target access have been assessed where relevant.
-- [ ] Efficiency claims report quality together with applicable compute, wall-clock, memory, hardware, precision, and amortized costs.
-- [ ] Benchmark coverage and omissions are explicit, and important trade-offs are not hidden by a single aggregate score.
 
 ## Technical and visual audit
 
@@ -64,7 +51,7 @@ Treat this as planning guidance, not a reason to conceal a serious late-discover
 - [ ] Figure fonts, legends, labels, lines, units, and axis limits remain readable at final size.
 - [ ] Comparable plots use comparable scales or explain why not.
 - [ ] Mathematical displays have grammar and punctuation.
-- [ ] All notation is defined before first use.
+- [ ] Notation needed for current reasoning is defined locally; necessary deferred mentions follow the Cref strategy and point to verified definitions.
 - [ ] Citation commands are grammatical and citation tone is precise.
 - [ ] Venue style, page limit, bibliography format, subject area, and supplementary rules are checked against current instructions.
 - [ ] Title and abstract in the submission system match the PDF.

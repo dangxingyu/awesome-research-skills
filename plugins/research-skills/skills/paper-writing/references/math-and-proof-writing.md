@@ -2,13 +2,7 @@
 
 ## Core theorem rewrite mode
 
-When the user asks to turn an existing argument into one core theorem and proof, first recover the exact assumptions, main conclusion, intermediate claims, and dependency order. Do not force this shape onto several genuinely independent results.
-
-Keep the core theorem as short as correctness permits and state one recognizable main conclusion. Move secondary consequences into remarks or corollaries. Promote an intermediate claim to a lemma only when it exposes a conceptual step or is reused, and make the final proof show explicitly how the lemmas combine.
-
-Use standard notation and one symbol per concept. Explain each new symbol in prose before or with its first definition. Match proof detail to the intended audience; when no audience is given, make every argument-specific algebraic and logical step checkable by an advanced undergraduate familiar with the prerequisites. Identify the assumption, lemma, identity, or standard result behind each nontrivial step instead of using words such as “clearly” as a substitute for an argument.
-
-When the user requests executable deliverables, write LaTeX that follows the existing paper's class, macros, environments, and file organization. Compile and visually inspect a PDF when the repository and requested scope support it. Otherwise return the requested theorem and proof without expanding the task into a standalone document.
+When the user asks to turn an existing argument into one core theorem and proof, also read [core-theorem-rewrite.md](core-theorem-rewrite.md). This is a specialized restructuring mode. Do not impose it on a paper with several genuinely independent results.
 
 ## Present the main result as soon as it is appreciable
 
@@ -78,15 +72,47 @@ Allow sequential reading whenever practical. State a claim before relying on it.
 
 Recall a definition or symbol that has not appeared recently. Write “the river projection $P(w)$” rather than bare “$P(w)$” when the reminder prevents a lookup. Local redundancy is cheaper than forcing a reader to search several pages backward.
 
+## Cref strategy
+
+For a necessary reference to a concept whose definition appears later, place
+`(defined later in~\Cref{...})` directly after the relevant term.
+Use the label of the section, theorem, or definition containing the actual
+definition. A vague "defined below" or a link to a mere mention is insufficient.
+If only the formal details come later and the concept has already been
+explained, use "formally defined later" to describe the destination accurately.
+
+Verify that the destination occurs later, contains the promised definition,
+and has a valid label. When editing LaTeX, ensure `\Cref` is supported by the
+manuscript setup and the reference resolves in the compiled paper. A planned
+destination in an unfinished outline remains an unresolved verification item
+until it is written and checked.
+
+The pointer permits an explicitly deferred mention. It cannot supply the
+meaning of a quantity being calculated or an operation being used in the
+current argument. Give enough local explanation for the current claim, or
+move the necessary definition earlier. Do not introduce the full later
+construction merely to support a brief scope qualification.
+
+Prefix-only reader and terminology agents must keep their restricted context.
+They may recognize a marked deferral without reading ahead, while the writer
+or outline auditor verifies the destination separately. Acceptance requires
+both a locally understandable passage and a checked destination.
+
 ## Notation checks
 
-- Define every symbol at first use and use one symbol for one concept.
+- Define every paper-specific technical term and symbol at first substantive use. Mark necessary deferred mentions using the Cref strategy. Use one name or symbol for one concept.
 - Distinguish discrete indices, continuous time, random variables, events, vectors, matrices, and operators consistently.
 - State norms, probability spaces, conditioning, and asymptotic regimes.
 - Use semantic macros for notation likely to change or recur.
 - Use established operator forms such as `\operatorname{tr}`, `\argmax`, and `\lVert\cdot\rVert` rather than ad hoc italics.
 - Number equations and statements that are cited later. Use section-based numbering when consistent with the document.
 - Punctuate displayed equations as parts of sentences.
+- Apply the single-line display preference and width checks in
+  [style-and-latex.md](style-and-latex.md#equations).
+
+## Terminology and definition audits
+
+Use [review-workflow.md](review-workflow.md) for the first-use terminology ledger, definition-dependency checks, stale-definition audit, reviewer isolation, and acceptance loop. This reference defines the mathematical and cross-reference rules that those audits enforce.
 
 ## Proof-exposition audit
 

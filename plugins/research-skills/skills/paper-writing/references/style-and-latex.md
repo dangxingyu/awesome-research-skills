@@ -2,9 +2,13 @@
 
 Apply these conventions when they do not conflict with the venue template or the repository's established style.
 
+## Prose guardrails
+
+Unless required by mathematical notation, LaTeX syntax, a quotation, or a user-specified title, avoid the contrastive construction `not ... but ...` and avoid colons in outlines and paper prose. Prefer direct affirmative statements, periods, commas, or separate sentences.
+
 ## Sentence and paragraph style
 
-- Put the paragraph's main point first and give the paragraph one primary job.
+- Put the paragraph's main point first and give the paragraph one primary job. In technical setup, establish the object before commenting on it; overview and introduction previews are the exception.
 - Describe a phenomenon with the shortest sentence that remains accurate. State what happened before explaining why it happened.
 - Prefer concrete subjects and verbs: “The bound scales with $d$” is clearer than “A dependence on $d$ can be observed.”
 - Use the same precise term for the same concept. Do not rotate synonyms for variety when readers may infer a technical distinction.
@@ -16,13 +20,21 @@ Apply these conventions when they do not conflict with the venue template or the
 - Check articles, singular/plural agreement, and subject--verb agreement, especially in long sentences around citations.
 - Break a long sentence when it carries multiple logical relationships. Short does not mean choppy: preserve explicit transitions.
 
-For a phenomenon sentence, prefer the structure “object + change or relation.” Put setup, mechanism, evidence, and caveats in later sentences unless a qualifier is required to make the first sentence true. Do not optimize for raw word count at the expense of scope, uncertainty, or mathematical correctness.
+For a phenomenon sentence about an already established object, prefer the structure “object + change or relation.” Put further mechanism, evidence, and caveats in later sentences unless a qualifier is required to make the first sentence true. Do not optimize for raw word count at the expense of scope, uncertainty, or mathematical correctness.
 
-When introducing a difficult idea, choose the order that minimizes reader effort. A concrete example may precede intuition; intuition should normally precede formalism; the formal statement should be followed by interpretation.
+When introducing a difficult idea, choose the order that minimizes reader effort. A concrete example may define the object before symbolic formalism. Place interpretive comments after the relevant definition; introductions and section overviews may preview the idea earlier.
 
 ## Terminology and macros
 
-Choose a small set of names for the paper's key concepts early. Maintain a terminology sheet if several authors are editing. Use semantic LaTeX macros for:
+Use standard terminology or a direct description of the action. Avoid coining
+labels for ordinary operations or compressing them into unfamiliar compound
+phrases. For example, describe the Generator as asking the Oracle to select a
+research field from a taxonomy and a contribution category, rather than naming
+this operation "priced taxonomy choices." Explain the cost separately where
+it is needed. Apply the same rule to outline headings and paragraph summaries.
+
+Keep the paper's established or user-adopted terms consistent. Maintain a
+terminology sheet if several authors are editing. Use semantic LaTeX macros for:
 
 - method and dataset names;
 - mathematical objects or operators;
@@ -33,7 +45,14 @@ Do not hide ordinary prose behind macros. A macro should improve consistency or 
 
 ## Equations
 
-- Use `align` for genuine multi-line derivations and align at the logical relation.
+- Keep a displayed equation on one line when it fits comfortably at the normal
+  manuscript font size, with room for its equation number. Short chains of
+  equalities or inequalities usually belong in a single `equation` environment;
+  do not insert line breaks solely because another relation begins.
+- Use `align`, `aligned`, or `split` when width requires it or separate lines
+  clarify a substantive derivation. Align at the logical relation. Preserve
+  readable spacing and notation rather than shrinking fonts or squeezing a
+  long equation onto one line. Verify the final width in the compiled paper.
 - Label equations or individual lines that will be referenced. Suppress numbering only for lines that have no later identity.
 - When a line uses a theorem or transformation that is not obvious, put a short explanation close to that line. A compact annotation is better than forcing the reader to match “line 3” with a later paragraph.
 - Avoid `$$...$$`; it does not integrate well with document numbering and spacing.
@@ -60,7 +79,44 @@ Treat each figure as one idea.
 - Choose convenient units such as thousands or millions instead of long strings of zeros.
 - Check font, legend, label, and line sizes at the figure's final paper dimensions.
 
+For a mechanism or protocol figure, prefer a concrete, traceable instance when
+it makes the interaction easier to understand. Show the relevant input or
+current state, actual questions or alternatives, selection probabilities when
+applicable, and the selected path or resulting update. Plan this example with
+the outline so the figure and prose explain the same operation. Preserve real
+labels and structural relationships when illustrating a taxonomy or other
+experimental resource, and label simplified answer sets or hypothetical
+probabilities as illustrative. Choose the panel arrangement for the reader's
+task rather than prescribing one layout for every paper.
+
 Plot trends when the trend is the message; use tables when exact values or many categorical comparisons matter.
+
+### Main-text figure page fit
+
+Treat the figure and its caption as one layout unit. A main-text figure that
+occupies a whole page or is isolated on a float-only page requires another
+layout pass, even if its standalone export looks good. Always try to reduce
+the figure height, caption length, or both so the unit can share a page with
+meaningful body text.
+
+- First remove excess plot margins and inter-panel spacing. Try a shorter
+  aspect ratio, a more compact panel arrangement, and concise labels or legends.
+  Moderate scaling is acceptable when the final-size text remains readable.
+- Shorten captions by removing repeated results and explanations already clear
+  from the panels. Retain the central takeaway, essential panel definitions,
+  metric and sample information, and qualifications needed to interpret the
+  result correctly. Put extended discussion in the surrounding prose.
+- Check whether unnecessary forced page breaks or float barriers are causing
+  the isolated page. Adjust local placement where appropriate without changing
+  venue margins, global typography, or hiding overflow with negative spacing.
+- Recompile and inspect the figure page and its neighbors after each meaningful
+  adjustment. A successful build or an attractive standalone PNG does not
+  establish that the paper layout fits.
+
+Do not accept a full-page main-text figure as the default solution to crowded
+labels. If reasonable compaction attempts cannot preserve readability and
+essential content, flag the unresolved layout and ask whether to simplify the
+figure, relocate supporting panels, or explicitly allow a full-page exception.
 
 ## Citations
 

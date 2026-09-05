@@ -26,8 +26,8 @@ Provenance:
   (commit `a86e60d`), with platform-neutral wording adjustments.
 - `paper-writing` supersedes the earlier `write-deep-learning-papers` skill.
   It organizes the paper-wide workflow into focused guidance for story and
-  section design, mathematical exposition, technical style, exemplar
-  patterns, and submission checks.
+  section design, mathematical exposition, technical style, independent
+  review workflows, exemplar patterns, and submission checks.
 - `read-arxiv-paper` is adapted from
   [`karpathy/nanochat`](https://github.com/karpathy/nanochat) (MIT, commit
   `92d63d4`), with the nanochat-specific cache path and summary framing
