@@ -1,7 +1,7 @@
 # Awesome Research Skills
 
 A plugin marketplace of reusable research and technical-writing workflows for
-Codex and Claude Code. One plugin, five skills.
+Codex and Claude Code. One plugin, six top-level skills.
 
 ## Skills
 
@@ -11,7 +11,8 @@ Codex and Claude Code. One plugin, five skills.
 | `launch-theory-agent` | Run audited, cyclic multi-agent theorem searches. |
 | `read-arxiv-paper` | Fetch an arxiv paper's TeX source, read it end to end, and summarize it in the context of the current project. |
 | `write-experiment-reports` | Audit experiment evidence, define algorithms and settings precisely, write a rigorous report, and render a QA-checked PDF. |
-| `paper-writing` | Plan, draft, revise, and audit machine-learning and mathematical research papers. |
+| `paper-writing` | Plan, draft, revise, simplify, and audit machine-learning and mathematical research papers. Includes a `simplify` subskill for semantic redundancy. |
+| `capacity-pool` | Operate the existing shared PLI/Della GPU pool through one CLI and ledger: leases, keep-warm, CURRENT/NEXT continuity, and authorized repair. |
 
 The skills compose into a pipeline: sharpen an idea into a plan, run the plan
 (theory branches via `launch-theory-agent`, literature checks via
@@ -19,8 +20,20 @@ The skills compose into a pipeline: sharpen an idea into a plan, run the plan
 via `write-experiment-reports`, and write the paper via
 `paper-writing`.
 
+`capacity-pool` supports experiment execution on an already deployed PLI/Della
+pool. It contains operating instructions, not the scheduler implementation or
+an installer. Its deployment-specific paths and resource policy are not defaults
+for other users or clusters. Read its deployment-scope section before use.
+
 Provenance:
 
+- `capacity-pool` is published from `wuji/projects/capacity-pool/skills/capacity-pool`
+  (September 8, 2026), including its operator reference. The only publication
+  addition is the deployment-scope notice. On the existing Della installation,
+  Codex and Claude continue to use the same project-local skill via discovery
+  links; this repository is a distribution snapshot, not another live pool
+  manager. No credentials, live ledger, runtime store, or job artifacts are
+  included.
 - `launch-theory-agent` originates from
   [`dangxingyu/theory-research-suite`](https://github.com/dangxingyu/theory-research-suite)
   (commit `a86e60d`), with platform-neutral wording adjustments.
@@ -54,6 +67,7 @@ $launch-theory-agent
 $read-arxiv-paper
 $write-experiment-reports
 $paper-writing
+$capacity-pool
 ```
 
 Codex may also invoke a skill automatically when a request matches its
@@ -77,6 +91,7 @@ invoke a skill by name:
 /read-arxiv-paper
 /write-experiment-reports
 /paper-writing
+/capacity-pool
 ```
 
 Claude Code may also invoke a skill automatically when a request matches its
@@ -96,5 +111,8 @@ awesome-research-skills/
         ├── launch-theory-agent/
         ├── read-arxiv-paper/
         ├── write-experiment-reports/
-        └── paper-writing/
+        ├── paper-writing/
+        │   └── simplify/
+        └── capacity-pool/
+            └── references/operator.md
 ```
