@@ -111,6 +111,15 @@ Check that the title does not overclaim beyond the strongest result.
 
 ## Abstract
 
+Compress the introduction by importance, rather than shortening every
+paragraph equally. First identify its central question, proposed idea,
+essential mechanism, decisive evidence, and main implication. Retain the
+elements needed to reconstruct that story; select only the most informative
+numbers and omit secondary ablations or implementation details. Check each
+abstract claim against the introduction and its evidence in the full paper.
+An omission must not broaden a claim or turn a conditional implication into
+an established result.
+
 Write one self-contained paragraph. A reliable sequence is:
 
 1. setting and stakes;
@@ -123,7 +132,31 @@ Write one self-contained paragraph. A reliable sequence is:
 
 Do not turn the abstract into a table of contents. Include the results that change the reader's belief, not every result in the paper. Expand acronyms only when they recur or are central.
 
+Choose an abstract pattern that fits the contribution rather than forcing every
+paper into the same sequence:
+
+- **Challenge to contribution.** State the obstacle, the contribution that
+  addresses it, its supported benefit, and the decisive evidence.
+- **Challenge to insight to implementation.** When the conceptual insight is
+  distinct from its implementation, explain the insight in plain language
+  before naming the method that realizes it. Then state the supported benefit
+  and evidence. A method name alone does not explain the insight.
+- **Several contributions with their benefits.** When several contributions
+  are essential to the same story, pair each with its specific supported benefit
+  before giving the overall evidence. Avoid a list of unexplained components.
+
+These are optional patterns. Match evidence to the claim, including theoretical
+results where appropriate, and retain qualifications needed for accuracy.
+
 ## Introduction
+
+Compress the full paper into a coherent account of its most important
+contributions. Use the methods, theory, experiments, and discussion to decide
+what deserves emphasis. Preserve the main reasoning and decisive evidence,
+while leaving proofs, detailed protocols, and secondary findings to the body.
+A reader should understand the paper's contribution and its limits without
+reading every section. Check that the abstract preserves this same emphasis
+at a smaller scale.
 
 A strong introduction often makes these moves:
 
@@ -138,6 +171,12 @@ A strong introduction often makes these moves:
 Place an opening figure early when the central idea is visual. It should function as a graphical abstract: the caption states the main takeaway, explains encodings, and connects panels into an argument.
 
 Avoid beginning with a broad history of the field. Cite directly relevant work while creating the tension; defer a fuller conceptual comparison to related work.
+
+Describe the contribution's relationship to prior work accurately, including
+when it is incremental. A baseline followed by a well-motivated improvement can
+be the clearest explanation. Do not hide that relationship or inflate novelty
+to make the work appear less incremental. Explain what the change establishes
+and why that result matters.
 
 ## Method or model section
 
@@ -156,6 +195,20 @@ motivation. A useful order is:
 Define the simplest core case first, then generalize. Separate the essential idea from engineering choices. If the method is a reformulation, show the original and new forms side by side and explain what becomes easier.
 
 ### Describe an implemented method
+
+For each important component, check three questions while outlining:
+
+- **Purpose.** What concrete problem or requirement motivates this component?
+- **Operation.** What are its inputs, relevant structures, ordered steps, and
+  outputs, and how do those outputs enter the rest of the method?
+- **Justification.** Why should the design address the problem, and what proof,
+  controlled comparison, or other evidence supports the claimed benefit?
+
+Distinguish design rationale from an established mechanism or measured gain.
+If justification is only a hypothesis, label it accordingly. These questions
+are a coverage check, not a required three-paragraph template or an assumption
+that every component is novel. Establish the component before discussing its
+advantages, following the definition-order rules.
 
 When writing from a codebase, check the following relationships while building
 the paragraph outline, before polishing its wording.

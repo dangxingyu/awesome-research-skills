@@ -31,6 +31,28 @@ If independent agents are unavailable, perform the same checks directly and repo
 
 ## Accept paragraphs against the outline
 
+### Reconstruct the argument of an existing draft
+
+When reviewing flow or substantially restructuring an existing section, first
+derive a reverse outline from the prose itself. Record the section's actual
+central claim, each paragraph's main claim or job, and the evidence or reasoning
+that develops it. Include source locations. Read the whole paragraph rather
+than assuming its opening sentence faithfully summarizes its contents.
+
+Check whether each paragraph advances the section's claim and whether its
+support establishes its own point. Flag missing logical links, repeated jobs,
+unsupported conclusions, and paragraphs whose actual job differs from their
+opening. Use this reconstruction to distinguish a wording problem from a
+structural or evidence gap.
+
+Then compare the reconstructed argument with the approved outline, when one
+exists. Do not fill gaps using author intent or silently treat the reconstruction
+as a newly approved plan. Propose material structural changes under the existing
+outline approval gate. Skip this extra step for narrow copyedits or when an
+equivalent reconstruction already exists for the current candidate.
+
+### Check the approved paragraph obligations
+
 For every drafted or substantively revised paragraph, map each approved job and development point to the sentences that fulfill it. Check:
 
 - purpose and emphasis;
@@ -64,6 +86,11 @@ At a technical section boundary, require the central concepts and claim to be re
 ## Run a first-use terminology audit
 
 Audit in reading order and stop at the first occurrence of each paper-specific entity, operation, event, quantity, or symbol. Include ordinary-looking words that carry a technical meaning. Treat standard mathematical vocabulary as background only when the intended audience can use it conventionally.
+
+Apply the code-derived naming rule in `SKILL.md` before accepting a term merely
+because it has a definition. Check whether it names a scientific concept or
+only a repository artifact, distinguish author-written exposition from verbatim
+evidence, and propose a reader-facing replacement for unnecessary internal names.
 
 Maintain a ledger containing:
 

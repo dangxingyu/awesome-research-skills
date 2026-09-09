@@ -78,6 +78,10 @@ Treat each figure as one idea.
 - Use the same axis limits for directly comparable plots unless a different scale is necessary and clearly marked.
 - Choose convenient units such as thousands or millions instead of long strings of zeros.
 - Check font, legend, label, and line sizes at the figure's final paper dimensions.
+- In the compiled PDF, all figure text (including ticks, legends, annotations,
+  and numerical values) must be at least as large as normal body text, and
+  figure/panel titles must be larger. Verify size after inclusion scaling;
+  change the layout rather than shrinking text below that floor.
 
 For a mechanism or protocol figure, prefer a concrete, traceable instance when
 it makes the interaction easier to understand. Show the relevant input or
@@ -117,6 +121,30 @@ Do not accept a full-page main-text figure as the default solution to crowded
 labels. If reasonable compaction attempts cannot preserve readability and
 essential content, flag the unresolved layout and ask whether to simplify the
 figure, relocate supporting panels, or explicitly allow a full-page exception.
+
+## Tables
+
+Give each table one main comparison or question. Make it interpretable without
+requiring readers to guess the metric, setting, or meaning of a row.
+
+- Put metric direction in headers when it is not obvious, such as accuracy
+  $\uparrow$ or error $\downarrow$, and state units and any scaling factors.
+- Use consistent numeric precision within each metric column, appropriate to
+  the measurement uncertainty. Align numbers consistently, preferably by the
+  decimal point, and align descriptive text to the left.
+- Prefer sparse `booktabs` rules over vertical separators, double rules, or
+  a horizontal line after every row. Group related settings with clear headers
+  and partial rules where helpful. Follow the venue's required table style.
+- Name ablation rows or provide attribute columns so readers can identify what
+  was removed, replaced, or held fixed. Define symbols and abbreviations.
+- Use restrained emphasis for key comparisons and explain its meaning. Avoid
+  implying that a tiny numerical lead establishes a meaningful improvement.
+- Give table captions the same care as figure captions. State the setting,
+  essential protocol, notation, and uncertainty convention when applicable.
+  Prefer a caption above the table unless the venue specifies otherwise, and
+  put the LaTeX label after the caption.
+- Check the table at final paper size. Preserve readable text and explicit
+  comparisons when simplifying a wide table or splitting it into groups.
 
 ## Citations
 
