@@ -41,7 +41,8 @@ Healthy CURRENT or pending NEXT is preserved, including its immutable runtime,
 queue age and all foreign leases. Recovery only submits when every registered
 legacy/native ancestor is authoritatively terminal and no unknown same-slot
 job exists. Under recovery/admin/slot locks it repeats the checks, journals
-SUBMITTING before `sbatch`, and requests 4 × 8 GPUs, PLI only, 24h, singleton.
+SUBMITTING before `sbatch`, and requests 4 × 8 GPUs, PLI only, 24h. Independent
+standby runtimes omit Slurm dependencies; legacy runtimes retain singleton.
 It follows the ordinary successor chain; it never resets its history. A lost
 acknowledgement may bind only the exact live recovery token/runtime, never
 blindly retry. Other unresolved intents require operator reconciliation.
@@ -78,18 +79,19 @@ GPU controller to deploy these login-only fixes.
 Public names are runtime-bound by `sbatch/job-names.json`. Purpose-name runtimes
 use `optimizer-training` / `meta-grad-training`; earlier contracts retain
 `wuji-research-a/b`, and unnamed old runtimes retain `h100-32a/b`. All keep the same
-internal slot, locks, lease namespace and successor token. Native submission
-uses `afterany:CURRENT,singleton`: the exact predecessor dependency protects a
-cross-name boundary, and singleton protects generations of the same public
-name. Slurm removes satisfied dependencies, so an already-satisfied singleton
-can disappear; do not mistake that for a missing submission option. A pending
-NEXT of a still-running CURRENT must retain its predecessor dependency.
+internal slot, lease namespace and successor token. The target runtime's
+`sbatch/renewal-policy.json` is authoritative: `independent-standby` submits
+without dependencies; absence of the file means legacy `afterany:CURRENT,singleton`.
+Validate the matching policy, not a universal dependency rule. Never clear an
+old-runtime job's dependency: its controller cannot safely wait for admission.
 Recovery inventories both name generations and tokens and refuses unknown
 same-slot jobs; it never creates a second chain just to adopt the new name.
 
 `pool status --json` is the common view. The per-allocation agent owns fill,
-work, recovery, and NEXT. It holds `locks/<slot>.lock` for its lifetime and
-records launches/successor submissions before external calls. Do not submit a
+work, recovery, and NEXT. Independent runtimes hold `locks/allocation-<job>.lock`
+for their lifetime and take `locks/<slot>.lock` only after predecessor ancestry
+is terminal. Legacy controllers hold the slot lock for their lifetime. They
+record launches/successor submissions before external calls. Do not submit a
 competing successor for a native agent: reconcile its exact durable intent and
 live Slurm job first. A missing or stale heartbeat is not proof of termination.
 
@@ -113,10 +115,11 @@ The command is restricted to audited immutable CURRENT runtimes, a fresh
 running controller, its exact confirmed pending NEXT, and purpose-name targets.
 It retains `CURRENT -> OLD_NEXT` unchanged, journals cancellation intent, cancels
 only that exact PENDING job, verifies CANCELLED, and journals/submits
-`OLD_NEXT -> NEW_NEXT`. The new job's Slurm dependency is `afterany:CURRENT`
-plus `singleton`; its bootstrap predecessor is the cancelled OLD_NEXT. Thus
-the new runtime verifies both terminal ancestors before taking the slot lock
-and running work. Do not rewire the original edge or edit immutable releases.
+`OLD_NEXT -> NEW_NEXT`. Its bootstrap predecessor is the cancelled OLD_NEXT.
+Independent runtimes can start immediately, but warm only their own allocation
+until both earlier ancestors are terminal and the slot lock is acquired.
+Legacy targets retain `afterany:CURRENT,singleton`. Do not rewire original edges,
+rewrite spooled scripts, clear old-runtime dependencies or edit frozen releases.
 
 Old CURRENT controllers continue work/fill independently while refusing to
 resubmit their cancelled NEXT. The replacement-aware status/dashboard verifies
@@ -132,6 +135,48 @@ Unresolved cancellation still pending, missing acknowledgement, foreign name
 collision, identity change or unexpected descendant blocks mutation. Preserve
 the intent and inspect it; do not erase it to force a retry. Keep operation
 receipts in `state/replacements/` and deployment evidence in project/runs.
+
+### Independent NEXT and deferred runtime upgrades
+
+This mode removes both `afterany` and `singleton`, not merely the first one.
+Submission checks `pli-short MaxTRESPU=gres/gpu=64` and Slurm's QoS/limits
+enforcement. A RUNNING NEXT is a separate allocation, never permission to
+duplicate CURRENT's work. It writes its own `allocations/<slot>-<job>.json`
+heartbeat and warm receipts without overwriting `slots/<slot>.json` or leases.
+Only the admitted generation submits NEXT, preventing a standby submission cascade.
+An early allocation's 24-hour lifetime starts when Slurm starts it, not when
+the slot admits it. A/B lease reassignment and forced CURRENT cancellation are
+not implemented. If B is missing while A NEXT starts early, capacity can be
+64 allocated but only 32 admitted; report the other 32 as standby, not B work.
+
+To preserve a currently pending old-runtime job's queue age, authorize only its
+future NEXT upgrade with:
+
+```bash
+pool admin stage-upgrade --slot SLOT --current EXACT_QUEUED_JOB --runtime EXACT_RELEASE
+pool admin stage-upgrade --slot SLOT --current EXACT_QUEUED_JOB --runtime EXACT_RELEASE --apply
+```
+
+The first command previews; the second persists one exact plan in `upgrades/`.
+The existing host-fenced recovery timer waits for this CURRENT to run and its
+native agent to confirm NEXT, then invokes the journaled replacement API on
+that NEXT only. It never cancels the protected CURRENT, changes leases, targets
+another generation, or starts a new watcher. Ordinary recovery alone does not
+authorize replacement. A completed plan is not repeated. Query failure, changed
+identity or unexpected terminal CURRENT blocks the plan and is reported in
+`recovery/status.json` under `upgrades`/`errors`; do not erase an ambiguous intent.
+Deploy the tested CLI/dashboard/recovery units before staging a plan.
+
+Acceptance: check new NEXT's effective empty Dependency, 24h policy, exact
+runtime/token and retained predecessor tombstones; compare protected CURRENT,
+lease bytes and pending B's SubmitTime/EligibleTime/AccrueTime. Then observe
+AccrueTime and `sprio` AGE at separated times. Removing dependencies eliminates
+that particular age blocker, but does not prove age accrual under a saturated
+QoS or guarantee a start time. Della currently lacks `ACCRUE_ALWAYS` (see
+[Slurm age rules](https://slurm.schedmd.com/priority_multifactor.html)).
+Do not cancel/requeue an already eligible B simply to clear an absent dependency.
+Actual early-start warm receipts, admission, work and subsequent renewal are
+separate live acceptance gates; pending submissions and mock tests do not prove them.
 
 ## Repair an inherited short production holder
 

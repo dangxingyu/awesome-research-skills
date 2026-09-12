@@ -96,9 +96,18 @@ not a native holder. Do not start its broker as an experiment consumer.
   procedure to preserve its job ID/queue age; do not cancel and resubmit.
 - Capacity renewal is independent of experiments and who owns their work.
   Both A and B need CURRENT plus an already-submitted NEXT while CURRENT runs.
-  Native agents queue NEXT on their first healthy cycle (24-hour lead), using
-  `afterany:CURRENT,singleton`. Missing NEXT is an alarm, not a healthy state.
-  A queued dependency is not a guarantee of gap-free scheduler allocation.
+  Admitted native agents queue NEXT on their first healthy cycle (24-hour lead).
+  Runtimes with `sbatch/renewal-policy.json` mode `independent-standby` submit
+  **without `afterany` or `singleton`**. Legacy frozen runtimes retain both;
+  never remove dependencies from an old-runtime job in place. Independent
+  submissions verify Slurm enforces the existing pli-short 64-GPU/user ceiling.
+  An early NEXT keeps its own GPUs warm, without claiming the slot lease or
+  submitting another NEXT. Only terminal predecessor ancestry plus the slot
+  lock permits admission and work. This version does not reassign A/B leases.
+  Missing NEXT is an alarm. Queuing is not a gap-free allocation guarantee.
+  Della has no `ACCRUE_ALWAYS`: dependency waiting does not accrue age. Inspect
+  effective `AccrueTime` and `sprio` AGE; do not substitute SubmitTime or assume
+  age accrues under every other scheduler limit without observing it.
   A short holder reaching TIMEOUT is a lost allocation, even if NEXT exists;
   report the gap. Pending capacity cannot be kept warm before allocation.
 - Idle allocated GPUs stay warm. A live process or requested `warm` mode is
@@ -115,10 +124,13 @@ not a native holder. Do not start its broker as an experiment consumer.
   Do not add a native controller or a personal launcher to that allocation.
 - The designated login host's user systemd units serve the read-only dashboard
   and run a bounded recovery check each minute/after boot. Recovery is part of
-  this same project/CLI, not a second GPU controller: it never runs `srun`,
-  cancels jobs, changes leases or competes with a live holder's NEXT logic.
-  It only replaces an entirely terminal registered chain, with exact identity,
-  Slurm/accounting, lock and submission-intent checks. A failed observation
+  this same project/CLI, not a second GPU controller: it never runs `srun` or
+  changes leases. Ordinary recovery only replaces an entirely terminal chain.
+  Separately, an explicitly authorized `pool admin stage-upgrade` plan can
+  replace only the pending NEXT of its exact CURRENT after CURRENT starts;
+  it preserves CURRENT and uses the journaled replacement API. It never invents
+  upgrades from ordinary recovery authority or retargets another generation.
+  Both paths require exact identity, locks and submission-intent checks. A failed observation
   fences submissions. See the operator reference before managing these units.
   Enabled is not the same as started: check conditions, active timer, fresh
   recovery receipt and dashboard HTTP after maintenance. The deployed login
@@ -131,7 +143,7 @@ not a native holder. Do not start its broker as an experiment consumer.
   do not change when repository files change. CLI installation, native GPU
   activity, and end-to-end rollover acceptance are separate milestones.
 
-For status, report allocated/work/warm/pending separately, with each slot's
+For status, report allocated/work/warm/standby/pending separately, with each slot's
 actual holder time limit, NEXT time limit and lease owner. Once native rollout
 has begun, follow canonical successor journals beyond the initial migration
 generation. A stale legacy watcher must not hide a later pending native job.
@@ -150,9 +162,9 @@ User preference: use concise, truthful purpose names such as `training`,
 `meta-grad-training`, or `optimizer-training`. Do not put A/B slot suffixes,
 GPU counts, or hardware labels in public job names; this supersedes the earlier
 `wuji-research-a/b` suggestion. Use `self-play` only for actual self-play work.
-Keep resource requests/accounting and work/warm status accurate. Independent
-slot chains need distinct purpose names: check same-user name collisions before
-deployment because Slurm `singleton` dependencies are keyed by user and name.
+Keep resource requests/accounting and work/warm status accurate. Slot chains
+retain distinct purpose names. Check collisions, including old runtimes whose
+Slurm `singleton` dependencies are keyed by user and name.
 
 Keep `h100-32a` / `h100-32b` as stable INTERNAL slot/ledger/CLI identifiers.
 The target frozen runtime's `sbatch/job-names.json` governs public names.
@@ -166,9 +178,11 @@ Do not rename a queued/running job with standalone `scontrol update JobName=...`
 Installing a new CLI does not upgrade a spooled job's runtime. For explicitly
 authorized NEXT replacement (new job ID/queue age), use `pool admin replace-next`
 and the operator reference. It preserves CURRENT and the cancelled NEXT's
-original journal, then appends a new-runtime successor fenced behind CURRENT.
-`MIGRATING` with verified continuity means replacement is queued, not that GPU
-runtime rollover has completed. Never erase the cancellation tombstone or
+original journal, then appends a new-runtime successor. The target runtime
+determines whether Slurm dependencies or allocation-local standby protect the
+handoff. `MIGRATING` means the replacement is registered, not that work has
+rolled over. RUNNING standby counts as allocated GPUs but never as a lease or
+active experiment; PENDING counts zero. Never erase the cancellation tombstone or
 restart CURRENT to clear its expected old-NEXT warning. Preserve leases and
 verify the actual replacement and its subsequent successor names.
 
